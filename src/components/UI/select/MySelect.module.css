@@ -1,9 +1,17 @@
-.myBtn {
+.mySelector {
     padding: 5px 15px;
     color: #8B949E;
     font-size: 14px;
     background-color: #21262D;
     border: 2px solid rgba(240,246,252,0.1);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.myOptions {
+    color: #8B949E;
+    font-size: 16px;
+    background-color: #21262D; 
     border-radius: 8px;
     cursor: pointer;
 }

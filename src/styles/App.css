@@ -2,6 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+/*     background-color: #0D1117;
+    color: #F0F6FC */;
+}
+
+body {
+    background-color: #161B22;
+}
+
+h1 {
+    color: #C9D1D9;
 }
 
 #root {
@@ -16,9 +26,33 @@
 .post {
     display: flex;
     padding: 5px 15px 15px 15px;
-    border: 2px solid #FF7100;
+    color:#C9D1D9;
+    background-color: #21262D;
+    border: 1px solid rgba(240,246,252,0.1);
     border-radius: 16px;
     margin-top: 15px;
     justify-content: space-between;
     align-items: center;
+}
+
+.post__content {
+    background-color: #21262D;
+}
+
+.post-enter {
+    transform: translateX(-1500px);
+}
+
+.post-enter-active {
+    transform: translateX(0px);
+    transition: all 270ms ease-in;
+}
+
+.post-exit {
+    opacity: 1;
+}
+
+.post-exit-active {
+    transform: translateX(-1500px) ;
+    transition: all 270ms ease-in;
 }
