@@ -9,7 +9,8 @@ import { usePosts } from './hooks/usePosts';
 import PostService from './API/PostService'
 import Loader from './components/UI/Loader/Loader';
 import { useFetching } from './hooks/useFetching';
-import { getPageCount } from './utils/page';
+import { getPagesArray, getPageCount } from './utils/page';
+import Pagination from './components/UI/pagination/Pagination';
 
 
 function App() {
@@ -21,9 +22,7 @@ function App() {
     const [page, setPage] = useState(1);
     const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 
-    /* for */
-
-    const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
+    const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page) => {
         const response = await PostService.getAll(limit, page);
         setPosts(response.data);
         const totalCount = response.headers['x-total-count']
@@ -31,7 +30,7 @@ function App() {
     })
 
     useEffect(() => {
-        fetchPosts()
+        fetchPosts(limit, page)
     }, [])
 
     const createPost = (newPost) => {
@@ -41,6 +40,11 @@ function App() {
 
     const removePost = (post) => {
         setPosts(posts.filter(p => p.id !== post.id))
+    }
+
+    const changePage = (page) => {
+        setPage(page)
+        fetchPosts(limit, page)
     }
 
     return (
@@ -63,7 +67,14 @@ function App() {
                 ? <h1 style={{ textAlign: 'center' }}>Загрузка постов... <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Loader /></div></h1>
                 : <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Посты бложика" />
             }
-
+            <Pagination
+                page={page}
+                changePage={changePage}
+                totalPages={totalPages}
+            />
+            <div>
+                <hr style={{ margin: '15px 0' }} />
+            </div>
         </div>
     );
 }

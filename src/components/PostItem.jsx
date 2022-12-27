@@ -5,7 +5,7 @@ const PostItem = (props) => {
     return (
         <div className="post">
             <div className="post__content">
-                <h3 style={{ margin: '0 0 15px' }}>{props.number}. {props.post.title}</h3>
+                <h3 style={{ margin: '0 0 15px' }}>{props.post.id}. {props.post.title}</h3>
                 <div>
                     {props.post.body}
                 </div>
