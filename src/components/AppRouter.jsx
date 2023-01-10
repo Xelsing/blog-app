@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { publicRoutes, privateRoutes } from '../router/routes';
+import { AuthContext } from '../context';
 
 /* const AppRouter = () => {
     return (
@@ -17,15 +18,17 @@ import { publicRoutes, privateRoutes } from '../router/routes';
 
 
 const AppRouter = () => {
-    const isAuth = false;
+    const {isAuth} = useContext(AuthContext);
+
+    console.log(isAuth);
 
     return (
         isAuth
             ?
             <Routes>
-                {privateRoutes.map((route, index) =>
+                {privateRoutes.map(route =>
                     <Route
-                        key={index}
+                        key={route.path}
                         path={route.path}
                         element={route.element}
                     />
@@ -34,9 +37,9 @@ const AppRouter = () => {
             </Routes>
             :
             <Routes>
-                {publicRoutes.map((route, index) =>
+                {publicRoutes.map(route =>
                     <Route
-                        key={index}
+                        key={route.path}
                         path={route.path}
                         element={route.element}
                     />
