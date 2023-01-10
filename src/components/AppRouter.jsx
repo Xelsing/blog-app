@@ -1,23 +1,48 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom';
-import About from '../pages/About';
-import Posts from '../pages/Posts';
-import ErrorPage from '../pages/404';
-import PostIdPage from '../pages/PostIdPage';
+import { publicRoutes, privateRoutes } from '../router/routes';
 
-const AppRouter = () => {
+/* const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/" element={<Posts />} />
+            <Route path="/posts/" element={<Posts />} />
             <Route path="/posts/:id" element={<PostIdPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/404" element={<ErrorPage />} />
-            <Route
-                path="*"
-                element={<Navigate to="/404" replace />}
-            />
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
     )
-}
+} */
 
+
+const AppRouter = () => {
+    const isAuth = false;
+
+    return (
+        isAuth
+            ?
+            <Routes>
+                {privateRoutes.map((route, index) =>
+                    <Route
+                        key={index}
+                        path={route.path}
+                        element={route.element}
+                    />
+                )}
+                <Route path="*" element={<Navigate to="/posts" replace />} />
+            </Routes>
+            :
+            <Routes>
+                {publicRoutes.map((route, index) =>
+                    <Route
+                        key={index}
+                        path={route.path}
+                        element={route.element}
+                    />
+                )}
+                <Route path="/*" element={<Navigate to="/login" replace />} />
+            </Routes>
+    )
+}
 export default AppRouter

@@ -9,7 +9,7 @@ const Pagination = ({ totalPages, page, changePage }) => {
             {pagesArray.map(p =>
                 <span
                     onClick={() => changePage(p)}
-                    ket={p}
+                    key={p}
                     className={page === p ? 'page page_current' : 'page'}
                 >
                     {p}
