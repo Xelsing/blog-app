@@ -8,17 +8,21 @@ function App() {
 
     const [isAuth, setIsAuth] = useState(false);
 
-    useEffect( () => {
-        if(localStorage.getItem('auth')) {
+    const [isLoading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (localStorage.getItem('auth')) {
             setIsAuth(true);
         }
+        setLoading(false);
     }, [])
 
     return (
         <>
             <AuthContext.Provider value={{
                 isAuth,
-                setIsAuth
+                setIsAuth,
+                isLoading
             }}>
                 <Navbar />
                 <AppRouter />
