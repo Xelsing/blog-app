@@ -1,0 +1,12 @@
+.NavBarLinks {
+    padding: 8px 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: all 0.5s ease;
+}
+
+.NavBarLinks:hover {
+    color: #6E7681;
+}

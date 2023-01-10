@@ -59,7 +59,7 @@ function Posts() {
                 setFilter={setFilter}
             />
             {postError &&
-                <div><h1 style={{ textAlign: 'center' }}>Произошла ошибка</h1><h1 style={{ textAlign: 'center' }}>${postError}</h1></div>
+                <div><h1 style={{ textAlign: 'center' }}>Произошла ошибка ${postError}</h1></div>
             }
             {isPostsLoading
                 ? <h1 style={{ textAlign: 'center' }}>Загрузка постов... <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Loader /></div></h1>
