@@ -7,7 +7,7 @@ import { AuthContext } from "../../../context";
 
 
 const Navbar = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const { isAuth, setIsAuth } = useContext(AuthContext);
 
     const logout = () => {
         setIsAuth(false);
@@ -23,9 +23,17 @@ const Navbar = () => {
                     <Link to="/about" className={classes.NavBarLinks} >О блоге</Link>
                     {/* <Link to="/404" className={classes.NavBarLinks} >404</Link>
                     <Link to="/login" className={classes.NavBarLinks} >login</Link> */}
-                    <MyButton onClick={logout}>
-                        Выйти
-                    </MyButton>
+                    {isAuth
+                        ?
+                        <MyButton onClick={logout}>
+                            Выйти
+                        </MyButton>
+                        : <div></div>
+                        }
+
+
+
+
                 </div>
             </div>
         </>
