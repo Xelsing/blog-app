@@ -6,6 +6,8 @@ import { AuthContext } from './context';
 
 function App() {
 
+/*     let names: Array<String> = ['Govno', 'Jopa', 'Mocha', 'Huy'] */
+
     const [isAuth, setIsAuth] = useState(false);
 
     const [isLoading, setLoading] = useState(true);
