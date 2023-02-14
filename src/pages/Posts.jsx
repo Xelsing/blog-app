@@ -80,17 +80,17 @@ function Posts() {
                 <div><h1 style={{ textAlign: 'center' }}>Произошла ошибка ${postError}</h1></div>
             }
 
-            <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Посты бложика" />
+            <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Посты бложика на react" />
             <div className='lastElement' ref={lastElement} style={{ height: 20 }} />
             {isPostsLoading &&
                 <h1 style={{ textAlign: 'center' }}>Загрузка постов... <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Loader /></div></h1>
             }
 
-            <Pagination
+            {/* <Pagination
                 page={page}
                 changePage={changePage}
                 totalPages={totalPages}
-            />
+            /> */}
             <div>
                 <hr style={{ margin: '15px 0' }} />
             </div>
